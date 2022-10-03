@@ -19,6 +19,7 @@ namespace PL
     public class DatosPortal
     {
         public string Pagesrc { get; set; }
+        List<object> tss = new List<object>().ToList();
 
         public void ExtraerDatos()
 
@@ -90,8 +91,7 @@ namespace PL
             SepararDatos();
         }
 
-
-        public void SepararDatos()
+            public void SepararDatos()
 
         {
 
@@ -139,7 +139,7 @@ namespace PL
 
                             ML.DatosPortal datosPortal = new ML.DatosPortal();
 
-                            //List<object> tss = new List<object>().ToList();
+                           // List<object> tss = new List<object>().ToList();
                             datosPortal.Prioridad = tds[1].InnerText.ToString();
                             datosPortal.TipoServicio = tds[2].InnerText.ToString();
                             datosPortal.SucursalConsignatario = tds[3].InnerText.ToString();
@@ -156,7 +156,7 @@ namespace PL
                             datosPortal.HoraEnvio = tds[11].InnerText.ToString();
                             datosPortal.Actualizacion = tds[12].InnerText.ToString();
                             datosPortal.Estatus = tds[13].InnerText.ToString();
-
+                            //tss.Add(datosPortal);
                             //intento con equals
                             if (datosPortal.IdFolioDeServicio == null)
                             {
@@ -167,7 +167,88 @@ namespace PL
                                 ML.Result result = BL.DatosPortal.GetById(datosPortal.IdFolioDeServicio);
                                 if (result.Correct)
                                 {
-                                    if (datosPortal == result.Object)
+                                    List<bool> valores = new List<bool>();
+                                    
+                                    var Priori = result.Object.GetType().GetProperty("Prioridad");
+                                    var Prioridad = Priori.GetValue(result.Object,null);                                   
+                                    var resultado = datosPortal.Prioridad == Prioridad.ToString() ? true:false;
+                                    if (resultado==true)
+                                    valores.Add(resultado);
+
+                                    var Tiposerv = result.Object.GetType().GetProperty("TipoServicio");
+                                    var TipoServicio = Tiposerv.GetValue(result.Object, null);
+                                    var resultado1 = datosPortal.TipoServicio == TipoServicio.ToString() ? true : false;
+                                    if (resultado == true)
+                                        valores.Add(resultado1);
+
+                                    var SucursalConsig = result.Object.GetType().GetProperty("SucursalConsignatario");
+                                    var SucursalConsignatario = SucursalConsig.GetValue(result.Object, null);
+                                    var resultado2 = datosPortal.SucursalConsignatario == SucursalConsignatario.ToString() ? true : false;
+                                    if (resultado2 == true)
+                                        valores.Add(resultado2);
+
+                                    var FechaCap = result.Object.GetType().GetProperty("FechaCaptura");
+                                    var FechaCaptura = FechaCap.GetValue(result.Object, null);                                   
+                                    var resultado3 = datosPortal.FechaCaptura == FechaCaptura.ToString() ? true : false;
+                                    if (resultado3 == true)
+                                        valores.Add(resultado3);
+
+                                    var FechaRealizarSer = result.Object.GetType().GetProperty("FechaRealizarServicio");
+                                    var FechaRealizarServicio = FechaRealizarSer.GetValue(result.Object, null);                                   
+                                    var resultado4 = datosPortal.FechaRealizarServicio == FechaRealizarServicio.ToString() ? true : false;
+                                    if (resultado4 == true)
+                                        valores.Add(resultado4);
+
+                                    var IdFolioDeServ = result.Object.GetType().GetProperty("IdFolioDeServicio");
+                                    var IdFolioDeServicio = IdFolioDeServ.GetValue(result.Object, null);                                   
+                                    var resultado5 = datosPortal.IdFolioDeServicio == IdFolioDeServicio.ToString() ? true : false;
+                                    if (resultado5 == true)
+                                        valores.Add(resultado5);
+
+                                    var OrdenServ = result.Object.GetType().GetProperty("OrdenServicio");
+                                    var OrdenServicio = OrdenServ.GetValue(result.Object, null);                
+                                    var resultado6 = datosPortal.OrdenServicio == OrdenServicio.ToString() ? true : false;
+                                    if (resultado6 == true)
+                                        valores.Add(resultado6);
+
+                                    var Impor = result.Object.GetType().GetProperty("Importe");
+                                    var Importe = Impor.GetValue(result.Object, null);                                   
+                                    var resultado7 = datosPortal.Importe == decimal.Parse(Importe.ToString()) ? true : false;
+                                    if (resultado7 == true)
+                                        valores.Add(resultado7);
+
+                                    var Divis = result.Object.GetType().GetProperty("Divisa");
+                                    var Divisa = Divis.GetValue(result.Object, null);                                  
+                                    var resultado8 = datosPortal.Divisa == Divisa.ToString() ? true : false;
+                                    if (resultado8 == true)
+                                        valores.Add(resultado8);
+
+                                    var ter = result.Object.GetType().GetProperty("Te");
+                                    var Te = ter.GetValue(result.Object, null);                                
+                                    var resultado9 = datosPortal.Te == Te.ToString() ? true : false;
+                                    if (resultado9 == true)
+                                        valores.Add(resultado9);
+
+                                    var HoraEnv = result.Object.GetType().GetProperty("HoraEnvio");
+                                    var HoraEnvio = HoraEnv.GetValue(result.Object, null);                                   
+                                    var resultado10 = datosPortal.HoraEnvio == HoraEnvio.ToString() ? true : false;
+                                    if (resultado10 == true)
+                                        valores.Add(resultado10);
+
+                                    var Actualiza = result.Object.GetType().GetProperty("Actualizacion");
+                                    var Actualizacion = Actualiza.GetValue(result.Object, null);                                  
+                                    var resultado11 = datosPortal.Actualizacion == Actualizacion.ToString() ? true : false;
+                                    if (resultado11 == true)
+                                        valores.Add(resultado11);
+
+                                    var Estat = result.Object.GetType().GetProperty("Estatus");
+                                    var Estatus = Estat.GetValue(result.Object, null);                                   
+                                    var resultado12 = datosPortal.Estatus == Estatus.ToString() ? true : false;
+                                    if (resultado12 == true)
+                                        valores.Add(resultado12);
+
+
+                                    if (valores.Count==13)
                                     {
                                         Console.WriteLine("No hay cambios en ningun campo");
                                     }
@@ -177,6 +258,8 @@ namespace PL
                                         Console.WriteLine("Se modificaron los datos");
 
                                     }
+
+                                
                                 }
                                 else
                                 {
