@@ -148,10 +148,12 @@ namespace BL
                                     HoraEnvio = hrs; ;
                                 }
                                 datosPortal.HoraEnvio = HoraEnvio;
+
                                 string sub2 = row1[11].ToString();
                                 string Actualización = sub2.Substring(0, 16);                                
                                 datosPortal.Actualizacion = Actualización;
                                 datosPortal.Estatus = row1[12].ToString();
+
                                 //result.Objects.Add(datosPortal);
                                 result.Object = datosPortal;
 

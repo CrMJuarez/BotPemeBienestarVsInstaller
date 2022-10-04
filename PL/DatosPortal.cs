@@ -156,7 +156,7 @@ namespace PL
                             datosPortal.HoraEnvio = tds[11].InnerText.ToString();
                             datosPortal.Actualizacion = tds[12].InnerText.ToString();
                             datosPortal.Estatus = tds[13].InnerText.ToString();
-                            //tss.Add(datosPortal);
+                            
                             //intento con equals
                             if (datosPortal.IdFolioDeServicio == null)
                             {
