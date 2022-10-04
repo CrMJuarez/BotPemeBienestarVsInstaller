@@ -18,25 +18,26 @@ namespace PL
             dp.ExtraerDatos();
             //----->
             //comentar para poder depurar
-            //Timer timer = new Timer(15000);//30000
+            Timer timer = new Timer(15000);//30000
 
-            //timer.Elapsed += EventoElapsed;
-            //timer.Start();
+            timer.Elapsed += EventoElapsed;
+            timer.Start();
 
-            //while (true) ;
+            while (true) ;
             /////<-------
-
+            ///
+            //Console.ReadKey();
         }
         //----->
         //comentar para poder depurar
 
-        //private static void EventoElapsed(object sender, ElapsedEventArgs e)
-        //{
-        //    DatosPortal dp = new DatosPortal();
-        //    dp.ExtraerDatos();
+        private static void EventoElapsed(object sender, ElapsedEventArgs e)
+        {
+            DatosPortal dp = new DatosPortal();
+            dp.ExtraerDatos();
 
 
-        //}
+        }
         /////<-------
 
     }

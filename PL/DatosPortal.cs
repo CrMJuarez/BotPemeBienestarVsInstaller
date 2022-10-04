@@ -18,12 +18,12 @@ namespace PL
 
     public class DatosPortal
     {
-        public string Pagesrc { get; set; }
-        List<object> tss = new List<object>().ToList();
 
+        public string Pagesrc { get; set; }
         public void ExtraerDatos()
 
         {
+
             //----------->
             //Se colocan los chrome options para evitar que se abra el navegador en segundo plano y todo lo haga internamente
             //COMENTAR si se van a hacer pruebas 
