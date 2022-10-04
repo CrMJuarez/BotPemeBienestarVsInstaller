@@ -143,6 +143,16 @@ namespace PL
                             datosPortal.Prioridad = tds[1].InnerText.ToString();
                             datosPortal.TipoServicio = tds[2].InnerText.ToString();
                             datosPortal.SucursalConsignatario = tds[3].InnerText.ToString();
+
+                            //string cadena = datosPortal.SucursalConsignatario;
+
+                            //for (int i = 0; i < cadena.Length; i++)
+                            //{
+                            //    int posInicial = cadena.LastIndexOf("(") + 1;
+                            //    int longitud = cadena.IndexOf(")") - posInicial;
+                            //    var resultado = cadena.Substring(posInicial, longitud);
+                            //}
+
                             datosPortal.FechaCaptura = tds[4].InnerText.ToString();
                             datosPortal.FechaRealizarServicio = tds[5].InnerText.ToString();
                             datosPortal.IdFolioDeServicio = tds[6].InnerText.ToString();
