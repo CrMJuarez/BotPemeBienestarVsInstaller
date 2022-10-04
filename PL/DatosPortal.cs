@@ -247,7 +247,6 @@ namespace PL
                                     if (resultado12 == true)
                                         valores.Add(resultado12);
 
-
                                     if (valores.Count == 13)
                                     {
                                         Console.WriteLine("No hay cambios en ningun campo");
@@ -256,15 +255,12 @@ namespace PL
                                     {
                                         BL.DatosPortal.Update(datosPortal);
                                         Console.WriteLine("Se modificaron los datos");
-
                                     }
                                 }
                                 else
                                 {
-
                                     BL.DatosPortal.Add(datosPortal);
                                     Console.WriteLine("Se registraron los datos");
-
                                 }
                             }
                         }
