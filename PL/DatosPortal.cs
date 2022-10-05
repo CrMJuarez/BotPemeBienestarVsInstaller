@@ -170,11 +170,19 @@ namespace PL
                                 }
 
                             }
-                            if (banderaindex==0)
+                            if (banderaindex == 0)
                             {
-
+                                string vacio = " ";
                                 var IdSucursal = cadena[banderafin].ToString();
-                                datosPortal.IdSucursal = int.Parse(IdSucursal);
+                                if (IdSucursal == vacio)
+                                {
+                                    datosPortal.IdSucursal = 0;
+                                }
+                                else
+                                {
+                                    datosPortal.IdSucursal = int.Parse(IdSucursal);
+                                }
+                            
                             }
                             else
                             {

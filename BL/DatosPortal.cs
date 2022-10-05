@@ -67,7 +67,7 @@ namespace BL
                     collection[12].Value = datosPortal.Estatus;
 
                     collection[13] = new SqlParameter("@IdSucursal", System.Data.SqlDbType.Int);
-                    collection[13].Value = datosPortal.IdSucursal;
+                    collection[13].Value = datosPortal.IdSucursal.Value;
 
                     cmd.Parameters.AddRange(collection);
                     cmd.Connection.Open();
@@ -195,7 +195,7 @@ namespace BL
                     cmd.CommandText = query;
                     cmd.Connection = context;
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    SqlParameter[] collection = new SqlParameter[13];
+                    SqlParameter[] collection = new SqlParameter[14];
 
                     collection[0] = new SqlParameter("@IdFolioDeServicio", System.Data.SqlDbType.VarChar);
                     collection[0].Value = datosPortal.IdFolioDeServicio;
@@ -235,6 +235,9 @@ namespace BL
 
                     collection[12] = new SqlParameter("@Estatus", System.Data.SqlDbType.VarChar);
                     collection[12].Value = datosPortal.Estatus;
+
+                    collection[13] = new SqlParameter("@IdSucursal", System.Data.SqlDbType.Int);
+                    collection[13].Value = datosPortal.IdSucursal.Value;
 
                     cmd.Parameters.AddRange(collection);
                     cmd.Connection.Open();
