@@ -21,6 +21,7 @@ namespace ML
         public string HoraEnvio { get; set; }
         public string Actualizacion { get; set; }
         public string Estatus { get; set; }
+        public int? IdSucursal { get; set; }
       
        
 

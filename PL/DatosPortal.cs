@@ -27,7 +27,7 @@ namespace PL
             //----------->
             //Se colocan los chrome options para evitar que se abra el navegador en segundo plano y todo lo haga internamente
             //COMENTAR si se van a hacer pruebas 
-            //var timeOutTime = TimeSpan.FromMinutes(4);
+            var timeOutTime = TimeSpan.FromMinutes(4);
             var chromeOptions = new ChromeOptions();
 
             chromeOptions.AddArguments(new List<string>() {
@@ -144,15 +144,44 @@ namespace PL
                             datosPortal.TipoServicio = tds[2].InnerText.ToString();
                             datosPortal.SucursalConsignatario = tds[3].InnerText.ToString();
 
-                            //string cadena = datosPortal.SucursalConsignatario;
+                            string cadena = datosPortal.SucursalConsignatario;
 
-                            //for (int i = 0; i < cadena.Length; i++)
-                            //{
-                            //    int posInicial = cadena.LastIndexOf("(") + 1;
-                            //    int longitud = cadena.IndexOf(")") - posInicial;
-                            //    var resultado = cadena.Substring(posInicial, longitud);
-                            //}
+                            //int contador = 0;
+                            int banderaindex = 0;
+                            int banderafin=0;
+                            
+                            for (int i = cadena.Length - 1; i > 0; i--)
+                            {
+                                bool bandera = int.TryParse(cadena[i].ToString(), out var IgnoraBandera);
+                                if(bandera)
+                                {
+                                    if(banderafin==0)
+                                    {
+                                        banderafin = i;
+                                    }
+                                    if(!int.TryParse(cadena[i-1].ToString(), out var IgnoraBandera2))
+                                    {
+                                        i = 0;
+                                    }
+                                    else
+                                    {
+                                        banderaindex = i - 1;
+                                    }
+                                }
 
+                            }
+                            if (banderaindex==0)
+                            {
+
+                                var IdSucursal = cadena[banderafin].ToString();
+                                datosPortal.IdSucursal = int.Parse(IdSucursal);
+                            }
+                            else
+                            {
+                                var IdSucursal = cadena.Substring(banderaindex, banderafin - banderaindex +1).ToString();
+                                datosPortal.IdSucursal = int.Parse(IdSucursal);
+                            }
+                            
                             datosPortal.FechaCaptura = tds[4].InnerText.ToString();
                             datosPortal.FechaRealizarServicio = tds[5].InnerText.ToString();
                             datosPortal.IdFolioDeServicio = tds[6].InnerText.ToString();
