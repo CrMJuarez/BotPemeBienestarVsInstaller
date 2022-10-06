@@ -149,16 +149,19 @@ namespace PL
                             //int contador = 0;
                             int banderaindex = 0;
                             int banderafin=0;
-                            
+                            //recorre la cadena de texto se coloca el -1 porque va a partir de 0
                             for (int i = cadena.Length - 1; i > 0; i--)
                             {
+                                //se crea una bandera que recupera los caracteres parse los datos de la cadena
                                 bool bandera = int.TryParse(cadena[i].ToString(), out var IgnoraBandera);
                                 if(bandera)
                                 {
+                                    //si bandera es ==0 banderafin toma el valor de la variable i
                                     if(banderafin==0)
                                     {
                                         banderafin = i;
                                     }
+                                    //si no i se convierte en 0 y asi termina el ciclo
                                     if(!int.TryParse(cadena[i-1].ToString(), out var IgnoraBandera2))
                                     {
                                         i = 0;
@@ -170,22 +173,29 @@ namespace PL
                                 }
 
                             }
+                            //si la bandera index contiene varios caracteres se pasa al else quiere decir que encontro letras al inicio y tendra que hacer el conteo despues
                             if (banderaindex == 0)
                             {
+                                //se coloca vacio para las cadenas que vengan sin ningun numero
                                 string vacio = " ";
+                                //esta linea extrae los datos de la banderafin  
                                 var IdSucursal = cadena[banderafin].ToString();
+                                //si el dato de la bandera es vacio se compara con el if y se le agrega un 0
                                 if (IdSucursal == vacio)
                                 {
+
                                     datosPortal.IdSucursal = 0;
                                 }
                                 else
                                 {
+                                    //si no simplemente agrega el dato de la variable idsucursal
                                     datosPortal.IdSucursal = int.Parse(IdSucursal);
                                 }
-                            
+
                             }
                             else
                             {
+                                //extrae los numeros de la cadena 
                                 var IdSucursal = cadena.Substring(banderaindex, banderafin - banderaindex +1).ToString();
                                 datosPortal.IdSucursal = int.Parse(IdSucursal);
                             }
